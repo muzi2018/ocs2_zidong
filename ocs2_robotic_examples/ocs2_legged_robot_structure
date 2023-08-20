@@ -4,9 +4,9 @@ ocs2_legged_robot
 ├── config
 │   ├── command
 │   │   ├── gait.info:list, modesequence, switchingtime
-│   │   └── reference.info
+│   │   └── reference.info: comHeight, defaultJointState
 │   ├── mpc
-│   │   └── task.info
+│   │   └── task.info: centroidalModelType,swing_trajectory_config,Multiple_Shooting SQP settings,Rollout settings,mpc_timeHorizon
 │   └── multiplot
 │       ├── friction_cone.xml
 │       └── zero_velocity.xml
