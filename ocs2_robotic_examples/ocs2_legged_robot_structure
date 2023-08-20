@@ -1,0 +1,83 @@
+ocs2_legged_robot
+├── auto_generated
+├── CMakeLists.txt
+├── config
+│   ├── command
+│   │   ├── gait.info:list, modesequence, switchingtime
+│   │   └── reference.info
+│   ├── mpc
+│   │   └── task.info
+│   └── multiplot
+│       ├── friction_cone.xml
+│       └── zero_velocity.xml
+├── include
+│   └── ocs2_legged_robot
+│       ├── common
+│       │   ├── ModelSettings.h
+│       │   ├── Types.h
+│       │   └── utils.h
+│       ├── constraint
+│       │   ├── EndEffectorLinearConstraint.h
+│       │   ├── FrictionConeConstraint.h
+│       │   ├── NormalVelocityConstraintCppAd.h
+│       │   ├── ZeroForceConstraint.h
+│       │   └── ZeroVelocityConstraintCppAd.h
+│       ├── cost
+│       │   └── LeggedRobotQuadraticTrackingCost.h
+│       ├── dynamics
+│       │   └── LeggedRobotDynamicsAD.h
+│       ├── foot_planner
+│       │   ├── CubicSpline.h
+│       │   ├── SplineCpg.h
+│       │   └── SwingTrajectoryPlanner.h
+│       ├── gait
+│       │   ├── Gait.h
+│       │   ├── GaitSchedule.h
+│       │   ├── LegLogic.h
+│       │   ├── ModeSequenceTemplate.h
+│       │   └── MotionPhaseDefinition.h
+│       ├── initialization
+│       │   └── LeggedRobotInitializer.h
+│       ├── LeggedRobotInterface.h
+│       ├── LeggedRobotPreComputation.h
+│       ├── package_path.h.in
+│       └── reference_manager
+│           └── SwitchedModelReferenceManager.h
+├── package.xml
+├── src
+│   ├── common
+│   │   └── ModelSettings.cpp
+│   ├── constraint
+│   │   ├── EndEffectorLinearConstraint.cpp
+│   │   ├── FrictionConeConstraint.cpp
+│   │   ├── NormalVelocityConstraintCppAd.cpp
+│   │   ├── ZeroForceConstraint.cpp
+│   │   └── ZeroVelocityConstraintCppAd.cpp
+│   ├── dynamics
+│   │   └── LeggedRobotDynamicsAD.cpp
+│   ├── foot_planner
+│   │   ├── CubicSpline.cpp
+│   │   ├── SplineCpg.cpp
+│   │   └── SwingTrajectoryPlanner.cpp
+│   ├── gait
+│   │   ├── Gait.cpp
+│   │   ├── GaitSchedule.cpp
+│   │   ├── LegLogic.cpp
+│   │   └── ModeSequenceTemplate.cpp
+│   ├── initialization
+│   │   └── LeggedRobotInitializer.cpp
+│   ├── LeggedRobotInterface.cpp
+│   ├── LeggedRobotPreComputation.cpp
+│   └── reference_manager
+│       └── SwitchedModelReferenceManager.cpp
+└── test
+    ├── AnymalFactoryFunctions.cpp
+    ├── constraint
+    │   ├── testEndEffectorLinearConstraint.cpp
+    │   ├── testFrictionConeConstraint.cpp
+    │   └── testZeroForceConstraint.cpp
+    └── include
+        └── ocs2_legged_robot
+            └── test
+                └── AnymalFactoryFunctions.h
+
