@@ -77,8 +77,6 @@ void LeggedRobotVisualizer::launchVisualizerNode(ros::NodeHandle& nodeHandle) {
   costDesiredFeetPositionPublishers_.resize(centroidalModelInfo_.numThreeDofContacts);
   costDesiredFeetPositionPublishers_[0] = nodeHandle.advertise<visualization_msgs::Marker>("/legged_robot/desiredFeetTrajectory/LF", 1);
   costDesiredFeetPositionPublishers_[1] = nodeHandle.advertise<visualization_msgs::Marker>("/legged_robot/desiredFeetTrajectory/RF", 1);
-  costDesiredFeetPositionPublishers_[2] = nodeHandle.advertise<visualization_msgs::Marker>("/legged_robot/desiredFeetTrajectory/LH", 1);
-  costDesiredFeetPositionPublishers_[3] = nodeHandle.advertise<visualization_msgs::Marker>("/legged_robot/desiredFeetTrajectory/RH", 1);
   stateOptimizedPublisher_ = nodeHandle.advertise<visualization_msgs::MarkerArray>("/legged_robot/optimizedStateTrajectory", 1);
   currentStatePublisher_ = nodeHandle.advertise<visualization_msgs::MarkerArray>("/legged_robot/currentState", 1);
 
@@ -140,10 +138,12 @@ void LeggedRobotVisualizer::publishObservation(ros::Time timeStamp, const System
 /******************************************************************************************************/
 void LeggedRobotVisualizer::publishJointTransforms(ros::Time timeStamp, const vector_t& jointAngles) const {
   if (robotStatePublisherPtr_ != nullptr) {
-    std::map<std::string, scalar_t> jointPositions{{"LF_HAA", jointAngles[0]}, {"LF_HFE", jointAngles[1]},  {"LF_KFE", jointAngles[2]},
-                                                   {"LH_HAA", jointAngles[3]}, {"LH_HFE", jointAngles[4]},  {"LH_KFE", jointAngles[5]},
-                                                   {"RF_HAA", jointAngles[6]}, {"RF_HFE", jointAngles[7]},  {"RF_KFE", jointAngles[8]},
-                                                   {"RH_HAA", jointAngles[9]}, {"RH_HFE", jointAngles[10]}, {"RH_KFE", jointAngles[11]}};
+    std::map<std::string, scalar_t> jointPositions{{"torso_to_R_HipRz", jointAngles[0]}, {"R_HipRz_to_R_HipRx", jointAngles[1]},  {"R_HipRx_to_R_Thigh", jointAngles[2]},
+                                                   {"R_Knee", jointAngles[3]}, {"R_Ankle", jointAngles[4]},  {"torso_to_L_HipRz", jointAngles[5]},
+                                                   {"L_HipRz_to_L_HipRx", jointAngles[6]}, {"L_HipRx_to_L_Thigh", jointAngles[7]},  {"L_Knee", jointAngles[8]},
+                                                   {"L_Ankle", jointAngles[9]},{"torso_to_R_ShoulderRx", jointAngles[10]},{"R_ShoulderRx_to_R_UpperArm", jointAngles[11]},
+                                                   {"R_UpperArm_to_R_ForeArm", jointAngles[12]},{"torso_to_L_ShoulderRx", jointAngles[13]},{"L_ShoulderRx_to_L_UpperArm", jointAngles[14]},
+                                                   {"L_UpperArm_to_L_ForeArm", jointAngles[15]}};
     robotStatePublisherPtr_->publishTransforms(jointPositions, timeStamp);
   }
 }

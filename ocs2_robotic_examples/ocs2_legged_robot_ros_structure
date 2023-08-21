@@ -1,0 +1,31 @@
+ocs2_legged_robot_ros/
+├── CMakeLists.txt
+├── include
+│   └── ocs2_legged_robot_ros
+│       ├── gait
+│       │   ├── GaitKeyboardPublisher.h
+│       │   ├── GaitReceiver.h
+│       │   └── ModeSequenceTemplateRos.h
+│       └── visualization
+│           └── LeggedRobotVisualizer.h
+├── launch
+│   ├── legged_robot_ddp.launch
+│   ├── legged_robot_ipm.launch
+│   ├── legged_robot_sqp.launch
+│   └── multiplot.launch
+├── package.xml
+├── rviz
+│   └── legged_robot.rviz
+└── src
+    ├── gait
+    │   ├── GaitKeyboardPublisher.cpp
+    │   └── GaitReceiver.cpp
+    ├── LeggedRobotDdpMpcNode.cpp
+    ├── LeggedRobotDummyNode.cpp
+    ├── LeggedRobotGaitCommandNode.cpp
+    ├── LeggedRobotIpmMpcNode.cpp
+    ├── LeggedRobotPoseCommandNode.cpp
+    ├── LeggedRobotSqpMpcNode.cpp
+    └── visualization
+        └── LeggedRobotVisualizer.cpp
+
