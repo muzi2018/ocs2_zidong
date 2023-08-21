@@ -155,7 +155,8 @@ ScalarFunctionQuadraticApproximation SqpSolver::getValueFunction(scalar_t time, 
 }
 
 void SqpSolver::runImpl(scalar_t initTime, const vector_t& initState, scalar_t finalTime) {
-  if (settings_.printSolverStatus || settings_.printLinesearch) {
+    bool print = true;
+  if (settings_.printSolverStatus || settings_.printLinesearch||print) {
     std::cerr << "\n++++++++++++++++++++++++++++++++++++++++++++++++++++++";
     std::cerr << "\n+++++++++++++ SQP solver is initialized ++++++++++++++";
     std::cerr << "\n++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
@@ -187,7 +188,7 @@ void SqpSolver::runImpl(scalar_t initTime, const vector_t& initState, scalar_t f
   int iter = 0;
   sqp::Convergence convergence = sqp::Convergence::FALSE;
   while (convergence == sqp::Convergence::FALSE) {
-    if (settings_.printSolverStatus || settings_.printLinesearch) {
+    if (settings_.printSolverStatus || settings_.printLinesearch||print) {
       std::cerr << "\nSQP iteration: " << iter << "\n";
     }
     // Make QP approximation
@@ -218,10 +219,19 @@ void SqpSolver::runImpl(scalar_t initTime, const vector_t& initState, scalar_t f
 
   computeControllerTimer_.startTimer();
   primalSolution_ = toPrimalSolution(timeDiscretization, std::move(x), std::move(u));
+  std::cout<<"input size: "<<primalSolution_.inputTrajectory_[0].size()<<std::endl;
+    for (int i = 0; i < primalSolution_.inputTrajectory_[0].size(); ++i) {
+        std::cout<<"input "<<i<<"="<<primalSolution_.inputTrajectory_[0][i]<<std::endl;
+    }
+    std::cout<<"state size: "<<primalSolution_.stateTrajectory_[0].size()<<std::endl;
+    for (int i = 0; i < primalSolution_.stateTrajectory_[0].size(); ++i) {
+        std::cout<<"state "<<i<<"="<<primalSolution_.stateTrajectory_[0][i]<<std::endl;
+    }
+
   problemMetrics_ = multiple_shooting::toProblemMetrics(timeDiscretization, std::move(metrics));
   computeControllerTimer_.endTimer();
 
-  if (settings_.printSolverStatus || settings_.printLinesearch) {
+  if (settings_.printSolverStatus || settings_.printLinesearch||print) {
     std::cerr << "\nConvergence : " << toString(convergence) << "\n";
     std::cerr << "\n++++++++++++++++++++++++++++++++++++++++++++++++++++++";
     std::cerr << "\n+++++++++++++ SQP solver has terminated ++++++++++++++";
