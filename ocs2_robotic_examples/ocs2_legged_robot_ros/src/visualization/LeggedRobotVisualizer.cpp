@@ -155,7 +155,7 @@ void LeggedRobotVisualizer::publishBaseTransform(ros::Time timeStamp, const vect
   if (robotStatePublisherPtr_ != nullptr) {
     geometry_msgs::TransformStamped baseToWorldTransform;
     baseToWorldTransform.header = getHeaderMsg(frameId_, timeStamp);
-    baseToWorldTransform.child_frame_id = "base";
+    baseToWorldTransform.child_frame_id = "torso";
 
     const Eigen::Quaternion<scalar_t> q_world_base = getQuaternionFromEulerAnglesZyx(vector3_t(basePose.tail<3>()));
     baseToWorldTransform.transform.rotation = getOrientationMsg(q_world_base);
@@ -189,6 +189,7 @@ void LeggedRobotVisualizer::publishCartesianMarkers(ros::Time timeStamp, const c
   markerArray.markers.reserve(numberOfCartesianMarkers);
 
   // Feet positions and Forces
+  std::cout<<"centroidalModelInfo_.numThreeDofContacts="<<centroidalModelInfo_.numThreeDofContacts<<std::endl;
   for (size_t i = 0; i < centroidalModelInfo_.numThreeDofContacts; ++i) {
     markerArray.markers.emplace_back(
         getFootMarker(feetPositions[i], contactFlags[i], feetColorMap_[i], footMarkerDiameter_, footAlphaWhenLifted_));
