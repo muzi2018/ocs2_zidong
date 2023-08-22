@@ -91,6 +91,7 @@ auto PinocchioEndEffectorKinematics::getPosition(const vector_t& state) const ->
   for (const auto& frameId : endEffectorFrameIds_) {
     positions.emplace_back(data.oMf[frameId].translation());
   }
+        positions[1][0]=positions[1][0]-0.4;
   return positions;
 }
 

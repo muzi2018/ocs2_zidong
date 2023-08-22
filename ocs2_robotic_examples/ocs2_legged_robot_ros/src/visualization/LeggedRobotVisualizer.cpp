@@ -127,7 +127,6 @@ void LeggedRobotVisualizer::publishObservation(ros::Time timeStamp, const System
             for (int i1 = 0; i1 < feetPositions.size(); ++i1) {
                 std::cout<<"feetPositions "<<i1<<": "<<std::endl<<feetPositions[i1]<<std::endl;
             }
-
   std::vector<vector3_t> feetForces(centroidalModelInfo_.numThreeDofContacts);
   for (size_t i = 0; i < centroidalModelInfo_.numThreeDofContacts; i++) {
     feetForces[i] = centroidal_model::getContactForces(observation.input, i, centroidalModelInfo_);
