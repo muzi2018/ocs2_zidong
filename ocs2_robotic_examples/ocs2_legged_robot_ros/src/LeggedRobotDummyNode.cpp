@@ -43,7 +43,6 @@ using namespace legged_robot;
 
 int main(int argc, char** argv) {
   const std::string robotName = "legged_robot";
-
   // Initialize ros node
   ros::init(argc, argv, robotName + "_mrt");
   ros::NodeHandle nodeHandle;
@@ -72,7 +71,6 @@ int main(int argc, char** argv) {
   MRT_ROS_Dummy_Loop leggedRobotDummySimulator(mrt, interface.mpcSettings().mrtDesiredFrequency_,
                                                interface.mpcSettings().mpcDesiredFrequency_);
   leggedRobotDummySimulator.subscribeObservers({leggedRobotVisualizer});
-
   // Initial state
   SystemObservation initObservation;
   initObservation.state = interface.getInitialState();

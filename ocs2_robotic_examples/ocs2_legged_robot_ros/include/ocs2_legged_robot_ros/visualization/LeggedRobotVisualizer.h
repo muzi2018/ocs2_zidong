@@ -80,7 +80,7 @@ class LeggedRobotVisualizer : public DummyObserver {
 
   void publishOptimizedStateTrajectory(ros::Time timeStamp, const scalar_array_t& mpcTimeTrajectory,
                                        const vector_array_t& mpcStateTrajectory, const ModeSchedule& modeSchedule);
-
+    std::unique_ptr<PinocchioEndEffectorKinematics> endEffectorKinematicsPtr_;
  private:
   LeggedRobotVisualizer(const LeggedRobotVisualizer&) = delete;
   void publishJointTransforms(ros::Time timeStamp, const vector_t& jointAngles) const;
@@ -90,7 +90,7 @@ class LeggedRobotVisualizer : public DummyObserver {
 
   PinocchioInterface pinocchioInterface_;
   const CentroidalModelInfo centroidalModelInfo_;
-  std::unique_ptr<PinocchioEndEffectorKinematics> endEffectorKinematicsPtr_;
+
 
   tf::TransformBroadcaster tfBroadcaster_;
   std::unique_ptr<robot_state_publisher::RobotStatePublisher> robotStatePublisherPtr_;

@@ -78,7 +78,7 @@ class MRT_ROS_Dummy_Loop {
    * @param [in] observation: The current observation.
    */
   virtual void modifyObservation(SystemObservation& observation) {}
-
+    std::vector<std::shared_ptr<DummyObserver>> observers_;
  private:
   /**
    * Runs a loop where mpc optimizations are synchronized with the forward simulation of the system
@@ -95,7 +95,7 @@ class MRT_ROS_Dummy_Loop {
   SystemObservation forwardSimulation(const SystemObservation& currentObservation);
 
   MRT_ROS_Interface& mrt_;
-  std::vector<std::shared_ptr<DummyObserver>> observers_;
+
 
   scalar_t mrtDesiredFrequency_;
   scalar_t mpcDesiredFrequency_;

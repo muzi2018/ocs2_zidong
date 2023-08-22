@@ -49,8 +49,9 @@ MRT_ROS_Dummy_Loop::MRT_ROS_Dummy_Loop(MRT_ROS_Interface& mrt, scalar_t mrtDesir
 /******************************************************************************************************/
 /******************************************************************************************************/
 void MRT_ROS_Dummy_Loop::run(const SystemObservation& initObservation, const TargetTrajectories& initTargetTrajectories) {
-  ROS_INFO_STREAM("Waiting for the initial policy ...");
 
+  ROS_INFO_STREAM("Waiting for the initial policy ...");
+//  observers_[0].
   // Reset MPC node
   mrt_.resetMpcNode(initTargetTrajectories);
 

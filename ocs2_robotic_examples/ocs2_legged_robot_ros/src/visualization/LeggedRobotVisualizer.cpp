@@ -119,9 +119,15 @@ void LeggedRobotVisualizer::publishObservation(ros::Time timeStamp, const System
   // Extract components from state
   const auto basePose = centroidal_model::getBasePose(observation.state, centroidalModelInfo_);
   const auto qJoints = centroidal_model::getJointAngles(observation.state, centroidalModelInfo_);
-
+    std::cout<<"basePose: "<<std::endl<<basePose<<std::endl;
   // Compute cartesian state and inputs
   const auto feetPositions = endEffectorKinematicsPtr_->getPosition(observation.state);
+
+  std::cout<<"feetPositions size: "<<feetPositions.size()<<std::endl;
+            for (int i1 = 0; i1 < feetPositions.size(); ++i1) {
+                std::cout<<"feetPositions "<<i1<<": "<<std::endl<<feetPositions[i1]<<std::endl;
+            }
+
   std::vector<vector3_t> feetForces(centroidalModelInfo_.numThreeDofContacts);
   for (size_t i = 0; i < centroidalModelInfo_.numThreeDofContacts; i++) {
     feetForces[i] = centroidal_model::getContactForces(observation.input, i, centroidalModelInfo_);

@@ -29,3 +29,10 @@ ocs2_legged_robot_ros/
     └── visualization
         └── LeggedRobotVisualizer.cpp
 
+
+const auto feetPositions = endEffectorKinematicsPtr_->getPosition(observation.state);
+
+  PinocchioEndEffectorKinematics endEffectorKinematics(interface.getPinocchioInterface(), pinocchioMapping,
+                                                       interface.modelSettings().contactNames3DoF);
+    LeggedRobotInterface interface(taskFile, urdfFile, referenceFile);
+
