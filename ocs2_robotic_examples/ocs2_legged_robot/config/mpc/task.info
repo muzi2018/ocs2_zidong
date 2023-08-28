@@ -201,22 +201,22 @@ Q
   (11,11) 200.0    ; theta_base_x
 
   ;; Leg Joint Positions ;;
-   (12,12) 20.0   ; torso_to_R_HipRz
-   (13,13) 20.0   ; R_HipRz_to_R_HipRx
-   (14,14) 20.0   ; R_HipRx_to_R_Thigh
-   (15,15) 20.0   ; R_Knee
-   (16,16) 20.0   ; R_Ankle
-   (17,17) 20.0   ; torso_to_L_HipRz
-   (18,18) 20.0   ; L_HipRz_to_L_HipRx
-   (19,19) 20.0   ; L_HipRx_to_L_Thigh
-   (20,20) 20.0   ; L_Knee
-   (21,21) 20.0   ; L_Ankle
-   (22,22) 20.0   ; torso_to_R_ShoulderRx
-   (23,23) 20.0   ; R_ShoulderRx_to_R_UpperArm
-   (24,24) 20.0   ; R_UpperArm_to_R_ForeArm
-   (25,25) 20.0   ; torso_to_L_ShoulderRx
-   (26,26) 20.0   ; L_ShoulderRx_to_L_UpperArm
-   (27,27) 20.0   ; L_UpperArm_to_L_ForeArm
+   (12,12) 200.0   ; torso_to_R_HipRz
+   (13,13) 200.0   ; R_HipRz_to_R_HipRx
+   (14,14) 200.0   ; R_HipRx_to_R_Thigh
+   (15,15) 200.0   ; R_Knee
+   (16,16) 200.0   ; R_Ankle
+   (17,17) 200.0   ; torso_to_L_HipRz
+   (18,18) 200.0   ; L_HipRz_to_L_HipRx
+   (19,19) 200.0   ; L_HipRx_to_L_Thigh
+   (20,20) 200.0   ; L_Knee
+   (21,21) 200.0   ; L_Ankle
+   (22,22) 200.0   ; torso_to_R_ShoulderRx
+   (23,23) 200.0   ; R_ShoulderRx_to_R_UpperArm
+   (24,24) 200.0   ; R_UpperArm_to_R_ForeArm
+   (25,25) 200.0   ; torso_to_L_ShoulderRx
+   (26,26) 200.0   ; L_ShoulderRx_to_L_UpperArm
+   (27,27) 200.0   ; L_UpperArm_to_L_ForeArm
 }
 
 ; control weight matrix
@@ -233,12 +233,12 @@ R
   (5,5)   1.0       ; right_foot_force
 
   ;; foot velocity relative to base: [LF, LH, RF, RH] (uses the Jacobian at nominal configuration) ;;
-  (6,6) 50.0    ; x
-  (7,7) 50.0    ; y
-  (8,8) 50.0    ; z
-  (9,9) 50.0    ; x
-  (10,10) 50.0    ; y
-  (11,11) 50.0    ; z
+  (6,6) 200.0    ; x
+  (7,7) 200.0    ; y
+  (8,8) 200.0    ; z
+  (9,9) 200.0    ; x
+  (10,10) 200.0    ; y
+  (11,11) 200.0    ; z
 }
 
 frictionConeSoftConstraint
@@ -249,3 +249,10 @@ frictionConeSoftConstraint
   mu                     0.1
   delta                  5.0
 }
+
+
+
+
+
+
+
